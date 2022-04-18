@@ -13,7 +13,7 @@
 
 class Game {
  public:
-  Game(std::size_t grid_width, std::size_t grid_height, std::string path_to_file);
+  Game(std::size_t grid_width, std::size_t grid_height, std::string path_to_file, bool advanced);
   void Run(Controller const &controller, Renderer &renderer,
            std::size_t target_frame_duration);
   int GetScore() const;
@@ -36,6 +36,7 @@ class Game {
   // std::unique_ptr<std::vector<std::vector<int>>> _obstacles;
   int grid_width;
   int grid_height;
+  bool advanced;
   
   int score{0};
 

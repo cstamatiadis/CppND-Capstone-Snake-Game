@@ -4,16 +4,18 @@
 #include <fstream>
 #include "SDL.h"
 
-Game::Game(std::size_t grid_width, std::size_t grid_height, std::string path_to_file)
+Game::Game(std::size_t grid_width, std::size_t grid_height, std::string path_to_file, bool advanced)
     : snake(grid_width, grid_height),
       engine(dev()),
       random_w(0, static_cast<int>(grid_width - 1)),
       random_h(0, static_cast<int>(grid_height - 1)),
       file_path(path_to_file),
+      advanced(advanced),
       grid_width(grid_width),
       grid_height(grid_height),
       _obstacles(grid_height, std::vector<int>(grid_width,0)){
-  PlaceObstacles();
+  if(advanced){
+  PlaceObstacles();}
   PlaceFood();
 }
 
@@ -32,7 +34,7 @@ void Game::Run(Controller const &controller, Renderer &renderer,
     // Input, Update, Render - the main game loop.
     controller.HandleInput(running, snake);
     Update();
-    renderer.Render(snake, food, _obstacles);
+    renderer.Render(snake, food, _obstacles, advanced);
 
     frame_end = SDL_GetTicks();
 
@@ -90,6 +92,10 @@ void Game::PlaceObstacles() {
         std::cout<<"is not valid. And will hence be ignored" << "\n" ;
       }
     }
+  }
+  else{
+    std::cout<<"File could not be read or file does not exist, game will be switched to easy mode\n";
+    advanced = false;
   } 
 }
 
