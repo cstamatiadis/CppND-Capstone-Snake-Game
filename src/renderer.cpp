@@ -38,7 +38,7 @@ Renderer::~Renderer() {
   SDL_Quit();
 }
 
-void Renderer::Render(Snake const snake, SDL_Point const &food) {
+void Renderer::Render(Snake const snake, SDL_Point const &food, std::vector<std::vector<int>> const &_obs) {
   SDL_Rect block;
   block.w = screen_width / grid_width;
   block.h = screen_height / grid_height;
@@ -60,6 +60,19 @@ void Renderer::Render(Snake const snake, SDL_Point const &food) {
     block.y = point.y * block.h;
     SDL_RenderFillRect(sdl_renderer, &block);
   }
+
+  // Render obstacles body --> good this works--> now I have to get the data
+  SDL_SetRenderDrawColor(sdl_renderer, 0x55, 0x6B, 0x2F, 0xFF);
+  for(int i=0;i<grid_width;i++){
+    for(int j=0; j<grid_height;j++){
+      if(_obs[i][j]){
+        block.x = i * block.w;
+        block.y = j * block.h;
+        SDL_RenderFillRect(sdl_renderer, &block);
+      }
+    }
+  }
+
 
   // Render snake's head
   block.x = static_cast<int>(snake.head_x) * block.w;

@@ -13,8 +13,8 @@ class Snake {
         grid_height(grid_height),
         head_x(grid_width / 2),
         head_y(grid_height / 2) {}
-
-  void Update();
+  // not sure if this is the best way of doing things overall, but it should technically just work
+  void Update(std::vector<std::vector<int>> const &_obs);
 
   void GrowBody();
   bool SnakeCell(int x, int y);
@@ -29,7 +29,7 @@ class Snake {
   std::vector<SDL_Point> body;
 
  private:
-  void UpdateHead();
+  void UpdateHead(std::vector<std::vector<int>> const &_obs);
   void UpdateBody(SDL_Point &current_cell, SDL_Point &prev_cell);
 
   bool growing{false};

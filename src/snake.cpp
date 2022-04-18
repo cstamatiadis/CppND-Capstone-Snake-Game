@@ -2,12 +2,12 @@
 #include <cmath>
 #include <iostream>
 
-void Snake::Update() {
+void Snake::Update(std::vector<std::vector<int>> const &_obs) {
   SDL_Point prev_cell{
       static_cast<int>(head_x),
       static_cast<int>(
           head_y)};  // We first capture the head's cell before updating.
-  UpdateHead();
+  UpdateHead(_obs);
   SDL_Point current_cell{
       static_cast<int>(head_x),
       static_cast<int>(head_y)};  // Capture the head's cell after updating.
@@ -19,7 +19,7 @@ void Snake::Update() {
   }
 }
 
-void Snake::UpdateHead() {
+void Snake::UpdateHead(std::vector<std::vector<int>> const &_obs) {
   switch (direction) {
     case Direction::kUp:
       head_y -= speed;
@@ -41,6 +41,10 @@ void Snake::UpdateHead() {
   // Wrap the Snake around to the beginning if going off of the screen.
   head_x = fmod(head_x + grid_width, grid_width);
   head_y = fmod(head_y + grid_height, grid_height);
+  if(_obs[static_cast<int>(head_x)][static_cast<int>(head_y)]){
+    alive = false;
+  }
+
 }
 
 void Snake::UpdateBody(SDL_Point &current_head_cell, SDL_Point &prev_head_cell) {
