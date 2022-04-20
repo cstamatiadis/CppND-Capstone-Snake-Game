@@ -50,7 +50,6 @@ class Snake {
 
   Direction direction = Direction::kUp;
 
-  float speed{0.1f};
   int size{1};
   bool alive{true};
   float head_x;
@@ -58,8 +57,9 @@ class Snake {
   std::vector<SDL_Point> body;
   // create element of type obstacles
   Obstacles obs() const{return _obstacles;};
-
+  void changeSpeed(float delta){speed+=delta;};
  private:
+  float speed{0.1f};
   void UpdateHead();
   void UpdateBody(SDL_Point &current_cell, SDL_Point &prev_cell);
   Obstacles _obstacles;
