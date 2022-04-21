@@ -1,13 +1,29 @@
-# CPPND: Capstone Snake Game Example
+# CPPND: Capstone Snake Game
 
-This is a starter repo for the Capstone project in the [Udacity C++ Nanodegree Program](https://www.udacity.com/course/c-plus-plus-nanodegree--nd213). The code for this repo was inspired by [this](https://codereview.stackexchange.com/questions/212296/snake-game-in-c-with-sdl) excellent StackOverflow post and set of responses.
+This is my implementation of the Capstone Project provided [Udacity C++ Nanodegree Program](https://www.udacity.com/course/c-plus-plus-nanodegree--nd213). The code for this repo was inspired by [this](https://codereview.stackexchange.com/questions/212296/snake-game-in-c-with-sdl) excellent StackOverflow post and set of responses.
 
-<img src="snake_game.gif"/>
+<img src="snake_obstacle.gif"/>
 
-The Capstone Project gives you a chance to integrate what you've learned throughout this program. This project will become an important part of your portfolio to share with current and future colleagues and employers.
+The main implementation effort, went into adding obstacles to the classic Snake Game.
 
-In this project, you can build your own C++ application or extend this Snake game, following the principles you have learned throughout this Nanodegree Program. This project will demonstrate that you can independently create applications using a wide range of C++ features.
+## Addressed Rubric Points
+The project satisfies the following (non ***REQUIRED***) Rubric Points
+### Loops, Functions, I/O
+| **Criteria** | **Comment**  |
+|---|---|
+|  The project demonstrates an understanding <br />of C++ functions and control structures. |  The addede functions to deal with obstacles, use appropriate functions </br> and control structures.  |   
+|  The project reads data from a file and process <br />the data, or the program writes data to a file. |  The obstacles are read from a .txt file. |   
+|  The project accepts user input and processes <br /> the input. |  Ther user can choose the playing mode and load the obstacle map. |   
+### Object Oriented Programming
+| **Criteria** | **Comment**  |
+|---|---|
+|  The project uses Object Oriented Programming <br /> techniques. |  The obstacles are handled within an appropriate Class. |  
+|  Classes use appropriate access specifiers for <br /> class members. |  All class data members are explicitly specified as public, protected, or private. |  
+|  Class constructors utilize member initialization lists. |  Appropriate initialization. |  
+|  Classes abstract implementation details from their <br /> interfaces. |  Informative function names and appropriate comments are used. |  
+|  Classes encapsulate behavior. |  Getters are used in obstacles class. |  
 
+  
 ## Dependencies for Running Locally
 * cmake >= 3.7
   * All OSes: [click here for installation instructions](https://cmake.org/install/)
@@ -30,6 +46,12 @@ In this project, you can build your own C++ application or extend this Snake gam
 3. Compile: `cmake .. && make`
 4. Run it: `./SnakeGame`.
 
+## How To Play
+
+1. Start the executable `./SnakeGame`
+2. Choose the game mode (Easy/Advanced) by interacting with the Terminal
+3. If you choose advanced, you will be asked for an obstacle file. Such a file is provided in the [resources](/resources/obstacles.txt) folder. </br> You have to specify the entire file path, so assuming you downloaded the file to your home folder, it should look something like this: `user/home/CppND-Capstone-Snake-Game/resources/obstacles.txt` 
+4. Enjoy and try to avoid the obstacles!
 
 ## CC Attribution-ShareAlike 4.0 International
 
